@@ -26,6 +26,14 @@ public class LoginAction {
   QQLoginService qservice = new QQLoginService("100525886", "8def5aac6219d0e3e283e678e8e91b2a",
       "http://www.willculture.com/authorize/qq");
 
+  /**
+   * 登陆提交
+   * 
+   * @param type
+   * @param request
+   * @param response
+   * @return
+   */
   @RequestMapping("/login/{type}")
   public String login(@PathVariable String type, HttpServletRequest request,
       HttpServletResponse response) {
@@ -48,6 +56,13 @@ public class LoginAction {
   }
 
 
+  /**
+   * 登陆后验证
+   * 获取用户得昵称， 头像，地址，生日
+   * @param type
+   * @param request
+   * @return
+   */
   @RequestMapping("/authorize/{type}")
   @ResponseBody
   public String login$authorize(@PathVariable String type, HttpServletRequest request) {
@@ -71,6 +86,11 @@ public class LoginAction {
         System.out.println(user);
       }
     }
+    // 如果用户存在，直接登陆
+
+
+    // 如果用户不存在，两种选择，第一种创建账号直接登陆
+    // 第二种，绑定已有的账号
 
     return obj.toString();
   }
